@@ -196,6 +196,7 @@ namespace Csh_level_2_WPF
             if ((bool)rbChange.IsChecked)
             {
                 ChangeObject.MoveEGO(this);
+
             }
             else
             {
