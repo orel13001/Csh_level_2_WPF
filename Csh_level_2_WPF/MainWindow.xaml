@@ -5,8 +5,87 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Csh_level_2_WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow"
+        Height="600"
+        Width="800"
+        MaxHeight="600"
+        MaxWidth="800"
+        MinHeight="300"
+        MinWidth="400"
+        >
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="33*"/>
+            <ColumnDefinition Width="33*"/>
+            <ColumnDefinition Width="33*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="105*"/>
+            <RowDefinition Height="314*"/>
+        </Grid.RowDefinitions>
+        <ComboBox x:Name="cbStations" 
+                  VerticalAlignment="Stretch"
+                  HorizontalAlignment="Stretch"
+                  Width="157" 
+                  Height="22" Margin="20"
+                  SelectionChanged="cbStations_SelectionChanged"    
+                  />
+        <ComboBox x:Name="cbGTPs" 
+                  Grid.Column="1"
+                  VerticalAlignment="Stretch"
+                  HorizontalAlignment="Stretch"
+                  Width="157" 
+                  Height="22" Margin="20" SelectionChanged="cbGTPs_SelectionChanged"/>
+        <ComboBox x:Name="cbEGOs"
+                  Grid.Column="2" 
+                  VerticalAlignment="Stretch"
+                  HorizontalAlignment="Stretch"
+                  Width="157" 
+                  Height="22" Margin="20" SelectionChanged="cbEGOs_SelectionChanged"/>
         
+        <ListView x:Name="lvStation" 
+                  Margin="10" 
+                  Grid.Row="1" VerticalAlignment="Stretch">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Параметр"
+                                    Width="100"
+                                    DisplayMemberBinding="{Binding Key}"/>
+                    <GridViewColumn Header="Значение"
+                                    Width="140"
+                                    DisplayMemberBinding="{Binding Value}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        
+        <ListView x:Name="lvGTP" 
+            Margin="10" 
+            Grid.Row="1" VerticalAlignment="Stretch" Grid.Column="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Параметр"
+                        Width="100"
+                        DisplayMemberBinding="{Binding Key}"/>
+                    <GridViewColumn Header="Значение"
+                        Width="140"
+                        DisplayMemberBinding="{Binding Value}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        
+        <ListView x:Name="lvEGO" 
+            Margin="10" 
+            Grid.Row="1" VerticalAlignment="Stretch" Grid.Column="2">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Параметр"
+                        Width="100"
+                        DisplayMemberBinding="{Binding Key}"/>
+                    <GridViewColumn Header="Значение"
+                        Width="140"
+                        DisplayMemberBinding="{Binding Value}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>
