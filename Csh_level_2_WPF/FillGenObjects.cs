@@ -4,6 +4,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+
 
 namespace Csh_level_2_WPF
 {
@@ -37,6 +39,61 @@ namespace Csh_level_2_WPF
                 
             }
             return stations;
-        }        
+        }
+
+        internal static void AddStantion(WinAdd winAdd)
+        {
+            try
+            {
+                Station station = new Station(winAdd.tbName.Text, winAdd.tbCode.Text);
+                if (Station.AddStstionToList(station, (ICollection<Station>)MainWindow.stations))
+                    MessageBox.Show($"Электростанция {station.Name} добавлена");
+                else
+                    MessageBox.Show($"Электростанция {station.Name} уже существует");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Проверте корректность заполнения полей");
+            }
+        }
+
+        internal static void AddGTP(WinAdd winAdd)
+        {
+            try
+            {
+                Station station = MainWindow.stations[winAdd.cbStation.SelectedIndex];
+                GTP gtp = new GTP(winAdd.tbName.Text, winAdd.tbCode.Text);
+                if (station.AddGTP(gtp))
+                    MessageBox.Show($"ГТП {gtp.Name} добавлена");
+                else
+                    MessageBox.Show($"ГТП {gtp.Name} уже существует");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Проверте корректность заполнения полей"); 
+            }
+        }
+
+        internal static void AddEGO(WinAdd winAdd)
+        {
+            try
+            {
+                Station station = MainWindow.stations[winAdd.cbStation.SelectedIndex];
+                GTP gtp = station.gtps[winAdd.cbGTP.SelectedIndex];
+                EGO ego = new EGO(winAdd.tbName.Text,
+                                    winAdd.tbCode.Text,
+                                    Convert.ToDouble(winAdd.tbPmax.Text),
+                                    Convert.ToDouble(winAdd.tbPmin.Text));
+                if (gtp.AddEGO(ego))
+                    MessageBox.Show($"ЕГО {ego.Name} добавлена");
+                else
+                    MessageBox.Show($"ЕГО {ego.Name} уже существует");
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Проверте корректность заполнения полей");
+            }
+        }
     }
 }

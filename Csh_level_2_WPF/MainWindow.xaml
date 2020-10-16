@@ -5,46 +5,47 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Csh_level_2_WPF"
         mc:Ignorable="d"
-        Title="MainWindow"
-        Height="600"
+        Title="Вывод данных"
+        Height="357"
         Width="800"
         MaxHeight="600"
         MaxWidth="800"
         MinHeight="300"
         MinWidth="400"
         >
-    <Grid >
+    <Grid Margin="0,0,0,-1" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="33*"/>
             <ColumnDefinition Width="33*"/>
             <ColumnDefinition Width="33*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="105*"/>
-            <RowDefinition Height="314*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="175*"/>
+            <RowDefinition Height="52*"/>
         </Grid.RowDefinitions>
         <ComboBox x:Name="cbStations" 
-                  VerticalAlignment="Stretch"
-                  HorizontalAlignment="Stretch"
-                  Width="157" 
-                  Height="22" Margin="20"
+                  VerticalAlignment="Center"
+                  HorizontalAlignment="Center"
+                  Width="156" 
+                  Height="22" Margin="54,38,54,40"
                   SelectionChanged="cbStations_SelectionChanged"    
                   />
         <ComboBox x:Name="cbGTPs" 
                   Grid.Column="1"
-                  VerticalAlignment="Stretch"
-                  HorizontalAlignment="Stretch"
-                  Width="157" 
-                  Height="22" Margin="20" SelectionChanged="cbGTPs_SelectionChanged"/>
+                  VerticalAlignment="Center"
+                  HorizontalAlignment="Center"
+                  Width="156" 
+                  Height="22" Margin="54,38,54,40" SelectionChanged="cbGTPs_SelectionChanged"/>
         <ComboBox x:Name="cbEGOs"
                   Grid.Column="2" 
-                  VerticalAlignment="Stretch"
-                  HorizontalAlignment="Stretch"
-                  Width="157" 
-                  Height="22" Margin="20" SelectionChanged="cbEGOs_SelectionChanged"/>
-        
+                  VerticalAlignment="Center"
+                  HorizontalAlignment="Center"
+                  Width="156" 
+                  Height="22" Margin="54,38,54,40" SelectionChanged="cbEGOs_SelectionChanged"/>
+
         <ListView x:Name="lvStation" 
-                  Margin="10" 
+                  Margin="10,10,10,15" 
                   Grid.Row="1" VerticalAlignment="Stretch">
             <ListView.View>
                 <GridView>
@@ -57,9 +58,9 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        
+
         <ListView x:Name="lvGTP" 
-            Margin="10" 
+            Margin="10,10,10,15" 
             Grid.Row="1" VerticalAlignment="Stretch" Grid.Column="1">
             <ListView.View>
                 <GridView>
@@ -72,9 +73,9 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        
+
         <ListView x:Name="lvEGO" 
-            Margin="10" 
+            Margin="10,10,10,15" 
             Grid.Row="1" VerticalAlignment="Stretch" Grid.Column="2">
             <ListView.View>
                 <GridView>
@@ -87,5 +88,21 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        <Button x:Name="btnAdd" 
+                Content="Добавить" 
+                HorizontalAlignment="Left" 
+                Margin="10,5,0,0" 
+                VerticalAlignment="Top" 
+                Width="101" Height="37" 
+                Grid.Row="2" 
+                Grid.Column="1" Click="btnAdd_Click"/>
+        <Button x:Name="btnChange" 
+                Content="Изменить"
+                HorizontalAlignment="Left" 
+                Margin="153,5,0,0"
+                VerticalAlignment="Top"
+                Width="101" Height="37" 
+                Grid.Row="2"
+                Grid.Column="1"/>
     </Grid>
 </Window>

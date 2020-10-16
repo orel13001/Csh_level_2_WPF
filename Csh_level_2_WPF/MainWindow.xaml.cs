@@ -21,9 +21,9 @@ namespace Csh_level_2_WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        ObservableCollection<Station> stations;
-        List<GTP> gtps;
-        List<EGO> egos;
+        static internal ObservableCollection<Station> stations;
+        static internal List<GTP> gtps;
+        static internal List<EGO> egos;
 
 
         public MainWindow()
@@ -73,5 +73,10 @@ namespace Csh_level_2_WPF
             lvGTP.ItemsSource = null;
         }
 
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            WinAdd winAdd = new WinAdd();
+            winAdd.Show();
+        }
     }
 }

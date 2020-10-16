@@ -15,8 +15,8 @@ namespace Csh_level_2_WPF
 
         public string Name { get => name; set => name = value; }
         public string Code { get => code; set => code = value; }
-        public double Pmin { get => p_min; set => p_min = value; }
-        public double Pmax { get => p_max; set => p_max = value; }
+        public double Pmin { get => (from _ego in egos select _ego.Pmin).ToList().Sum();  }
+        public double Pmax { get => (from _ego in egos select _ego.Pmax).ToList().Sum();  }
 
         public bool AddEGO(EGO ego)
         {
@@ -27,10 +27,10 @@ namespace Csh_level_2_WPF
             if (!codes.Contains(ego.Code) && !names.Contains(ego.Name))
             {
                 egos.Add(ego);
-                p_max = (from _ego in egos
-                         select _ego.Pmax).ToList().Sum();
-                p_min = (from _ego in egos
-                         select _ego.Pmin).ToList().Sum();
+                //p_max = (from _ego in egos
+                //         select _ego.Pmax).ToList().Sum();
+                //p_min = (from _ego in egos
+                //         select _ego.Pmin).ToList().Sum();
                 return true;
             }
             return false;
@@ -45,10 +45,10 @@ namespace Csh_level_2_WPF
             if (codes.Contains(ego.Code) || names.Contains(ego.Name))
             {
                 egos.Remove(ego);
-                p_max = (from _ego in egos
-                         select _ego.Pmax).ToList().Sum();
-                p_min = (from _ego in egos
-                         select _ego.Pmin).ToList().Sum();
+                //p_max = (from _ego in egos
+                //         select _ego.Pmax).ToList().Sum();
+                //p_min = (from _ego in egos
+                //         select _ego.Pmin).ToList().Sum();
                 return true;
             }
             return false;
@@ -59,6 +59,8 @@ namespace Csh_level_2_WPF
         }
 
         public int CountEGO { get => egos.Count; }
+
+        
 
         internal override Dictionary<string, string> ParamNames()
         {

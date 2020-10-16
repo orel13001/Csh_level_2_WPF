@@ -9,8 +9,24 @@ namespace Csh_level_2_WPF
 {
     class EGO : GenObject
     {
-        public EGO(string name, string code, double Pmax, double Pmin) : base(name, code, Pmax, Pmin)
-        { }
+        double p_max;
+        double p_min;
+
+        public EGO(string name, string code, double Pmax, double Pmin) : base(name, code)
+        {
+            try
+            {
+                if (Pmax < Pmin) throw new ArgumentException();
+
+                p_max = Pmax;
+                p_min = Pmin;
+
+            }
+            catch (ArgumentException)
+            {
+                MessageBox.Show("Значение Рмин не может быть больше Рмакс");
+            }
+        }
 
         public string Name { get => name; set => name = value; }
         public string Code { get => code; set => code = value; }

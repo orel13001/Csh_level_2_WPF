@@ -22,10 +22,10 @@ namespace Csh_level_2_WPF
             if (!codes.Contains(gtp.Code) && !names.Contains(gtp.Name))
             {
                 gtps.Add(gtp);
-                p_max = (from _gtp in gtps
-                         select _gtp.Pmax).ToList().Sum();
-                p_min = (from _gtp in gtps
-                         select _gtp.Pmin).ToList().Sum();
+                //p_max = (from _gtp in gtps
+                //         select _gtp.Pmax).ToList().Sum();
+                //p_min = (from _gtp in gtps
+                //         select _gtp.Pmin).ToList().Sum();
                 return true;
             }
             return false;
@@ -40,10 +40,10 @@ namespace Csh_level_2_WPF
             if (codes.Contains(gtp.Code) || names.Contains(gtp.Name))
             {
                 gtps.Remove(gtp);
-                p_max = (from _gtp in gtps
-                         select _gtp.Pmax).ToList().Sum();
-                p_min = (from _gtp in gtps
-                         select _gtp.Pmin).ToList().Sum();
+                //p_max = (from _gtp in gtps
+                //         select _gtp.Pmax).ToList().Sum();
+                //p_min = (from _gtp in gtps
+                //         select _gtp.Pmin).ToList().Sum();
                 return true;
             }
             return false;
@@ -57,8 +57,8 @@ namespace Csh_level_2_WPF
 
         public string Name { get => name; }
         public string Code { get => code; }
-        public double Pmax { get => p_max; }
-        public double Pmin { get => p_min; }
+        public double Pmax { get => (from _gtp in gtps select _gtp.Pmax).ToList().Sum(); }
+        public double Pmin { get => (from _gtp in gtps select _gtp.Pmin).ToList().Sum(); }
         public int CountGTP { get => gtps.Count; }
 
         internal override Dictionary<string,string> ParamNames()
@@ -71,6 +71,20 @@ namespace Csh_level_2_WPF
             param.Add("Число ГТП", Convert.ToString(CountGTP));
 
             return param;
+        }
+
+        internal static bool AddStstionToList(Station station,  ICollection<Station> stations)
+        {
+            var names = (from _st in stations
+                         select _st.Name).ToList();
+            var codes = (from _st in stations
+                         select _st.Code).ToList();
+            if (!codes.Contains(station.Code) && !names.Contains(station.Name))
+            {
+                stations.Add(station);
+                return true;
+            }
+            return false;
         }
     }
 }
