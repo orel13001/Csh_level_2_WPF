@@ -103,6 +103,6 @@
                 VerticalAlignment="Top"
                 Width="101" Height="37" 
                 Grid.Row="2"
-                Grid.Column="1"/>
+                Grid.Column="1" Click="btnChange_Click"/>
     </Grid>
 </Window>

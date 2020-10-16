@@ -22,8 +22,8 @@ namespace Csh_level_2_WPF
     public partial class MainWindow : Window
     {
         static internal ObservableCollection<Station> stations;
-        static internal List<GTP> gtps;
-        static internal List<EGO> egos;
+        static internal List<GTP> gtps; // заменить на ObservableCollection
+        static internal List<EGO> egos;// заменить на ObservableCollection
 
 
         public MainWindow()
@@ -77,6 +77,12 @@ namespace Csh_level_2_WPF
         {
             WinAdd winAdd = new WinAdd();
             winAdd.Show();
+        }
+
+        private void btnChange_Click(object sender, RoutedEventArgs e)
+        {
+            WinChange winChange = new WinChange();
+            winChange.Show();
         }
     }
 }

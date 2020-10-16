@@ -55,6 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ChangeObject.cs" />
+    <Compile Include="WinChange.xaml.cs">
+      <DependentUpon>WinChange.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EGO.cs" />
     <Compile Include="FillGenObjects.cs" />
     <Compile Include="GTP.cs" />
@@ -62,6 +66,10 @@
     <Compile Include="WinAdd.xaml.cs">
       <DependentUpon>WinAdd.xaml</DependentUpon>
     </Compile>
+    <Page Include="WinChange.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

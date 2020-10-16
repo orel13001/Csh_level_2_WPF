@@ -1,0 +1,115 @@
+﻿<Window x:Class="Csh_level_2_WPF.WinChange"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Csh_level_2_WPF"
+        mc:Ignorable="d"
+        Title="Изменение объектов" Height="292" Width="800">
+    <Grid Height="257" VerticalAlignment="Top">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="165*"/>
+            <ColumnDefinition Width="200*"/>
+            <ColumnDefinition Width="195*"/>
+            <ColumnDefinition Width="232*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="85*"/>
+            <RowDefinition Height="95*"/>
+            <RowDefinition Height="101*"/>
+        </Grid.RowDefinitions>
+        <ComboBox x:Name="cbType" 
+            HorizontalAlignment="Left"
+            Margin="14,38,0,0"
+            VerticalAlignment="Top"
+            Width="140" Height="32" SelectionChanged="cbType_SelectionChanged"/>
+        <Label x:Name="lblType" 
+            Content="Вид объекта" 
+            TextBlock.TextAlignment="Center"   
+            HorizontalAlignment="Left" 
+            Margin="14,10,0,0"
+            VerticalAlignment="Top"
+            Height="23"
+            Width="140"/>
+        <ComboBox x:Name="cbStation" 
+            HorizontalAlignment="Left"
+            Margin="9,38,0,0"
+            VerticalAlignment="Top"
+            Width="179" Height="32" Visibility="Visible" 
+            SelectionChanged="cbStation_SelectionChanged" Grid.Column="1"/>
+        <ComboBox x:Name="cbGTP" 
+            HorizontalAlignment="Left"
+            Margin="10,38,0,0"
+            VerticalAlignment="Top"
+            Width="179" Height="32" Visibility="Visible" Grid.Column="2" SelectionChanged="cbGTP_SelectionChanged"/>
+        <Label x:Name="lblStation" 
+            Content="Выберите электростанцию" 
+            TextBlock.TextAlignment="Center"   
+            HorizontalAlignment="Left" 
+            Margin="9,10,0,0"
+            VerticalAlignment="Top"
+            Height="23"
+            Width="179" Visibility="Visible" Grid.Column="1"/>
+        <Label x:Name="lblGTP" 
+            Content="Выберете текущую ГТП" 
+            TextBlock.TextAlignment="Center"   
+            HorizontalAlignment="Left" 
+            Margin="10,10,0,0"
+            VerticalAlignment="Top"
+            Height="23"
+            Width="179" Visibility="Visible" Grid.Column="2"/>
+        <ComboBox x:Name="cbEGO" 
+            HorizontalAlignment="Left"
+            Margin="11,38,0,0"
+            VerticalAlignment="Top"
+            Width="179" Height="32" Visibility="Visible" Grid.Column="3"/>
+        <Label x:Name="lblEGO" 
+            Content="Выберете ЕГО" 
+            TextBlock.TextAlignment="Center"   
+            HorizontalAlignment="Left" 
+            Margin="11,10,0,0"
+            VerticalAlignment="Top"
+            Height="23"
+            Width="179" Visibility="Visible" Grid.Column="3"/>
+        <ComboBox x:Name="cbGTPnew" 
+                  Grid.Column="2"
+                  HorizontalAlignment="Left"
+                  Margin="10,43,0,0" 
+                  Grid.Row="1"
+                  VerticalAlignment="Top"
+                  Width="179" Height="32"/>
+        <Label x:Name="lblGTPnew" 
+               Content="Выберете новую ГТП" 
+               Grid.Column="2" 
+               HorizontalAlignment="Left"
+               Margin="10,12,0,0" 
+               Grid.Row="1" 
+               VerticalAlignment="Top"
+               Width="179"/>
+        <RadioButton x:Name="rbChange"
+                     Content="Перенести ЕГО"
+                     HorizontalAlignment="Left"
+                     Margin="30,20,0,0"
+                     VerticalAlignment="Top"
+                     IsChecked="True" Checked="rbChange_Checked" Grid.Row="1"/>
+        <RadioButton x:Name="rbDelete"
+                     Content="Удалить" 
+                     HorizontalAlignment="Left"
+                     Margin="30,50,0,0"
+                     VerticalAlignment="Top"
+                     IsChecked="False" Checked="rbDelete_Checked" Grid.Row="1"/>
+        <Button x:Name="btnExec"
+                Content="Выполнить" 
+                HorizontalAlignment="Left"
+                Margin="63,15,0,0"
+                VerticalAlignment="Top" 
+                Width="125" Height="40" Grid.Row="2" Grid.Column="1" Click="btnExec_Click"/>
+        <Button x:Name="btnClose" 
+                Content="Закрыть"
+                HorizontalAlignment="Left"
+                Margin="10,15,0,0" 
+                VerticalAlignment="Top" 
+                Width="125" Height="40" Grid.Row="2" Grid.Column="2" Click="btnClose_Click"/>
+
+    </Grid>
+</Window>

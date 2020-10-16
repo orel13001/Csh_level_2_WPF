@@ -86,5 +86,15 @@ namespace Csh_level_2_WPF
             }
             return false;
         }
+
+        internal static bool DelStationFromList(Station station, ICollection<Station> stations)
+        {
+            if (stations.Contains(station))
+            {
+                stations.Remove(station);
+                return true;
+            }
+            return false;
+        }
     }
 }
