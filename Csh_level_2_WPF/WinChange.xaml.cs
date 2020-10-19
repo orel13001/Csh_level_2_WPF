@@ -23,7 +23,6 @@ namespace Csh_level_2_WPF
         public WinChange()
         {
             InitializeComponent();
-
             
         }
 

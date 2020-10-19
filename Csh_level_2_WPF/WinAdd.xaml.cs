@@ -41,6 +41,7 @@ namespace Csh_level_2_WPF
                 case (1):
                 {
                         ClearElements();
+                        HiddenEGO();
                         VisibleGTP();
                         cbStation.ItemsSource = MainWindow.stations;
                         break;
@@ -110,25 +111,7 @@ namespace Csh_level_2_WPF
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            switch (cbType.SelectedIndex)
-            {
-                case (0):
-                    {
-                        FillGenObjects.AddStantion(this);
-                        break;
-                    }
-                case (1):
-                    {
-                        FillGenObjects.AddGTP(this);
-                        break;
-                    }
-                case (2):
-                    {
-                        FillGenObjects.AddEGO(this);
-                        break;
-                    }
-            }
-           
+            FillFromDB.AddGenObject(this);           
         }
     }
 }

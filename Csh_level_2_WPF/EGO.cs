@@ -12,7 +12,7 @@ namespace Csh_level_2_WPF
         double p_max;
         double p_min;
 
-        public EGO(string name, string code, double Pmax, double Pmin) : base(name, code)
+        public EGO(int id, string name, string code, double Pmax, double Pmin) : base(id, name, code)
         {
             try
             {

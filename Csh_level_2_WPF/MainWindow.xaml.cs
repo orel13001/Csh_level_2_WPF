@@ -13,6 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
+using System.Configuration;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace Csh_level_2_WPF
 {
@@ -22,18 +25,17 @@ namespace Csh_level_2_WPF
     public partial class MainWindow : Window
     {
         static internal ObservableCollection<Station> stations;
-        static internal List<GTP> gtps; // заменить на ObservableCollection
-        static internal List<EGO> egos;// заменить на ObservableCollection
-
 
         public MainWindow()
         {
             InitializeComponent();
 
-            stations = FillGenObjects.FillStation();
+            stations = FillFromDB.GetStationsFromDB();
+
+
+            
 
             cbStations.ItemsSource = stations;
-            //cbGTPs.ItemsSource = stations[cbStations.SelectedIndex].gtps;
 
         }
 
@@ -81,8 +83,8 @@ namespace Csh_level_2_WPF
 
         private void btnChange_Click(object sender, RoutedEventArgs e)
         {
-            WinChange winChange = new WinChange();
-            winChange.Show();
+        //    //WinChange winChange = new WinChange();
+        //    //winChange.Show();
         }
     }
 }

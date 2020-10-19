@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -56,11 +57,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ChangeObject.cs" />
+    <Compile Include="FillFromDB.cs" />
     <Compile Include="WinChange.xaml.cs">
       <DependentUpon>WinChange.xaml</DependentUpon>
     </Compile>
     <Compile Include="EGO.cs" />
-    <Compile Include="FillGenObjects.cs" />
     <Compile Include="GTP.cs" />
     <Compile Include="Station.cs" />
     <Compile Include="WinAdd.xaml.cs">

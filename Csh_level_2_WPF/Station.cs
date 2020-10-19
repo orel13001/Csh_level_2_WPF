@@ -9,7 +9,7 @@ namespace Csh_level_2_WPF
     class Station : GenObject
     {
         internal List<GTP> gtps = new List<GTP>();
-        public Station(string name, string code) : base(name, code)
+        public Station(int id, string name, string code) : base(id, name, code)
         {            
         }
 
@@ -22,10 +22,6 @@ namespace Csh_level_2_WPF
             if (!codes.Contains(gtp.Code) && !names.Contains(gtp.Name))
             {
                 gtps.Add(gtp);
-                //p_max = (from _gtp in gtps
-                //         select _gtp.Pmax).ToList().Sum();
-                //p_min = (from _gtp in gtps
-                //         select _gtp.Pmin).ToList().Sum();
                 return true;
             }
             return false;
@@ -40,10 +36,6 @@ namespace Csh_level_2_WPF
             if (codes.Contains(gtp.Code) || names.Contains(gtp.Name))
             {
                 gtps.Remove(gtp);
-                //p_max = (from _gtp in gtps
-                //         select _gtp.Pmax).ToList().Sum();
-                //p_min = (from _gtp in gtps
-                //         select _gtp.Pmin).ToList().Sum();
                 return true;
             }
             return false;

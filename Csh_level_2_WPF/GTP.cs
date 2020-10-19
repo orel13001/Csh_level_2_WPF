@@ -9,7 +9,7 @@ namespace Csh_level_2_WPF
     class GTP : GenObject
     {
         internal List<EGO> egos = new List<EGO>();
-        public GTP(string name, string code) : base(name, code)
+        public GTP(int id, string name, string code) : base(id, name, code)
         {
         }
 
@@ -27,10 +27,6 @@ namespace Csh_level_2_WPF
             if (!codes.Contains(ego.Code) && !names.Contains(ego.Name))
             {
                 egos.Add(ego);
-                //p_max = (from _ego in egos
-                //         select _ego.Pmax).ToList().Sum();
-                //p_min = (from _ego in egos
-                //         select _ego.Pmin).ToList().Sum();
                 return true;
             }
             return false;
@@ -45,10 +41,6 @@ namespace Csh_level_2_WPF
             if (codes.Contains(ego.Code) || names.Contains(ego.Name))
             {
                 egos.Remove(ego);
-                //p_max = (from _ego in egos
-                //         select _ego.Pmax).ToList().Sum();
-                //p_min = (from _ego in egos
-                //         select _ego.Pmin).ToList().Sum();
                 return true;
             }
             return false;

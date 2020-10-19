@@ -11,15 +11,18 @@ namespace Csh_level_2_WPF
     {
         protected string name;
         protected string code;
+        protected int id;
         //protected double p_max;
         //protected double p_min;
 
 
-
-        internal GenObject(string name, string code)
+        public int Id { get => id; }
+        internal GenObject(int id, string name, string code)
         {
             this.name = name;
             this.code = code;
+            this.id = id;
+
             //try
             //{
             //    if (Pmax < Pmin) throw new ArgumentException();
