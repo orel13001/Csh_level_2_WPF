@@ -1,0 +1,68 @@
+﻿Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=GenObject;Integrated Security=True;Pooling=False
+
+CREATE TABLE [dbo].[TypeGenObject] (
+    [Id]   TINYINT       IDENTITY (1, 1) NOT NULL,
+    [Name] NVARCHAR (30) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+CREATE TABLE [dbo].[GenObject] (
+    [Id]       INT           IDENTITY (20, 1) NOT NULL,
+    [ParentId] INT           NULL,
+    [Code]     NVARCHAR (15) NOT NULL,
+    [Name]     NVARCHAR (30) NOT NULL,
+    [TypeId]   TINYINT       NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC),
+    CONSTRAINT [FK_GenObject_ToTypeGenObject] FOREIGN KEY ([TypeId]) REFERENCES [dbo].[TypeGenObject] ([Id])
+);
+
+CREATE TABLE [dbo].[EGO_Params] (
+    [Id]     INT            IDENTITY (1, 1) NOT NULL,
+    [EGO_Id] INT            NOT NULL,
+    [Pmax]   DECIMAL (7, 3) NOT NULL,
+    [Pmin]   DECIMAL (7, 3) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC),
+    CONSTRAINT [FK_EGO_Params_ToGenObject] FOREIGN KEY ([EGO_Id]) REFERENCES [dbo].[GenObject] ([Id])
+);
+
+
+
+
+SET IDENTITY_INSERT [dbo].[TypeGenObject] ON
+INSERT INTO [dbo].[TypeGenObject] ([Id], [Name]) VALUES (1, N'Электростанция')
+INSERT INTO [dbo].[TypeGenObject] ([Id], [Name]) VALUES (2, N'ГТП')
+INSERT INTO [dbo].[TypeGenObject] ([Id], [Name]) VALUES (3, N'ЕГО')
+SET IDENTITY_INSERT [dbo].[TypeGenObject] OFF
+
+SET IDENTITY_INSERT [dbo].[GenObject] ON
+INSERT INTO [dbo].[GenObject] ([Id], [ParentId], [Code], [Name], [TypeId]) VALUES (1, NULL, N'SKUZEN01', N'Томь-Усинская ГРЭС', 1)
+INSERT INTO [dbo].[GenObject] ([Id], [ParentId], [Code], [Name], [TypeId]) VALUES (3, 1, N'GKUZEN01', N'ГТП-1', 2)
+INSERT INTO [dbo].[GenObject] ([Id], [ParentId], [Code], [Name], [TypeId]) VALUES (4, 1, N'GKUZEN02', N'ГТП-2', 2)
+INSERT INTO [dbo].[GenObject] ([Id], [ParentId], [Code], [Name], [TypeId]) VALUES (5, 1, N'GKUZEN03', N'ГТП-3', 2)
+INSERT INTO [dbo].[GenObject] ([Id], [ParentId], [Code], [Name], [TypeId]) VALUES (6, 1, N'GKUZEN04', N'ГТП-4', 2)
+INSERT INTO [dbo].[GenObject] ([Id], [ParentId], [Code], [Name], [TypeId]) VALUES (7, 3, N'EKUZEN01', N'ЕГО-1', 3)
+INSERT INTO [dbo].[GenObject] ([Id], [ParentId], [Code], [Name], [TypeId]) VALUES (8, 3, N'EKUZEN02', N'ЕГО-2', 3)
+INSERT INTO [dbo].[GenObject] ([Id], [ParentId], [Code], [Name], [TypeId]) VALUES (9, 3, N'EKUZEN03', N'ЕГО-3', 3)
+INSERT INTO [dbo].[GenObject] ([Id], [ParentId], [Code], [Name], [TypeId]) VALUES (10, 4, N'EKUZEN04', N'ЕГО-4', 3)
+INSERT INTO [dbo].[GenObject] ([Id], [ParentId], [Code], [Name], [TypeId]) VALUES (11, 5, N'EKUZEN05', N'ЕГО-5', 3)
+INSERT INTO [dbo].[GenObject] ([Id], [ParentId], [Code], [Name], [TypeId]) VALUES (12, 6, N'EKUZEN06', N'ЕГО-6', 3)
+INSERT INTO [dbo].[GenObject] ([Id], [ParentId], [Code], [Name], [TypeId]) VALUES (13, 6, N'EKUZEN07', N'ЕГО-7', 3)
+INSERT INTO [dbo].[GenObject] ([Id], [ParentId], [Code], [Name], [TypeId]) VALUES (14, 6, N'EKUZEN08', N'ЕГО-8', 3)
+INSERT INTO [dbo].[GenObject] ([Id], [ParentId], [Code], [Name], [TypeId]) VALUES (15, 6, N'EKUZEN09', N'ЕГО-9', 3)
+INSERT INTO [dbo].[GenObject] ([Id], [ParentId], [Code], [Name], [TypeId]) VALUES (20, NULL, N'SKUZEN02', N'Беловская ГРЭС', 1)
+INSERT INTO [dbo].[GenObject] ([Id], [ParentId], [Code], [Name], [TypeId]) VALUES (21, 20, N'GKUZEN11', N'ГТП-1', 2)
+INSERT INTO [dbo].[GenObject] ([Id], [ParentId], [Code], [Name], [TypeId]) VALUES (22, 21, N'EKUZEN11', N'ЕГО-1', 3)
+SET IDENTITY_INSERT [dbo].[GenObject] OFF
+
+SET IDENTITY_INSERT [dbo].[EGO_Params] ON
+INSERT INTO [dbo].[EGO_Params] ([Id], [EGO_Id], [Pmax], [Pmin]) VALUES (1, 7, CAST(100.000 AS Decimal(7, 3)), CAST(80.000 AS Decimal(7, 3)))
+INSERT INTO [dbo].[EGO_Params] ([Id], [EGO_Id], [Pmax], [Pmin]) VALUES (2, 8, CAST(100.000 AS Decimal(7, 3)), CAST(80.000 AS Decimal(7, 3)))
+INSERT INTO [dbo].[EGO_Params] ([Id], [EGO_Id], [Pmax], [Pmin]) VALUES (3, 9, CAST(100.000 AS Decimal(7, 3)), CAST(80.000 AS Decimal(7, 3)))
+INSERT INTO [dbo].[EGO_Params] ([Id], [EGO_Id], [Pmax], [Pmin]) VALUES (4, 10, CAST(120.000 AS Decimal(7, 3)), CAST(80.000 AS Decimal(7, 3)))
+INSERT INTO [dbo].[EGO_Params] ([Id], [EGO_Id], [Pmax], [Pmin]) VALUES (5, 11, CAST(120.000 AS Decimal(7, 3)), CAST(80.000 AS Decimal(7, 3)))
+INSERT INTO [dbo].[EGO_Params] ([Id], [EGO_Id], [Pmax], [Pmin]) VALUES (6, 12, CAST(200.000 AS Decimal(7, 3)), CAST(140.000 AS Decimal(7, 3)))
+INSERT INTO [dbo].[EGO_Params] ([Id], [EGO_Id], [Pmax], [Pmin]) VALUES (7, 13, CAST(200.000 AS Decimal(7, 3)), CAST(140.000 AS Decimal(7, 3)))
+INSERT INTO [dbo].[EGO_Params] ([Id], [EGO_Id], [Pmax], [Pmin]) VALUES (8, 14, CAST(200.000 AS Decimal(7, 3)), CAST(140.000 AS Decimal(7, 3)))
+INSERT INTO [dbo].[EGO_Params] ([Id], [EGO_Id], [Pmax], [Pmin]) VALUES (9, 15, CAST(200.000 AS Decimal(7, 3)), CAST(140.000 AS Decimal(7, 3)))
+INSERT INTO [dbo].[EGO_Params] ([Id], [EGO_Id], [Pmax], [Pmin]) VALUES (10, 22, CAST(200.000 AS Decimal(7, 3)), CAST(140.000 AS Decimal(7, 3)))
+SET IDENTITY_INSERT [dbo].[EGO_Params] OFF
